@@ -1,8 +1,40 @@
 <html>
-  <head>
-    <title>Hello kubernetes</title>
-  </head>
-  <body>
-    This is just a kubernetes test.
-  </body>
+
+<head>
+  <title>Hello kubernetes</title>
+</head>
+
+<body>
+  This is just a kubernetes test.
+
+  <br />
+
+  <b>Version:</b> <span id="version"></span>
+
+</body>
+
+<script>
+  window.onload = () => {
+    var req = new XMLHttpRequest();
+    req.open('GET', 'http://localhost:3000/');
+    req.setRequestHeader('Access-Control-Allow-Headers', '*');
+    req.setRequestHeader('Access-Control-Allow-Origin', '*');
+    req.onreadystatechange = function (aEvt) {
+      const versionNode = document.getElementById('version');
+
+      if (req.readyState == 4) {
+        if (req.status == 200) {
+          const version = JSON.parse(req.response).version
+
+          versionNode.innerText = version;
+        } else {
+          versionNode.innerText = 'Alto error';
+        }
+      }
+    };
+
+    req.send();
+  }
+</script>
+
 </html>
