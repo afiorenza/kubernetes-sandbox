@@ -1,0 +1,17 @@
+// List
+kubectl get all
+
+// Create resources
+kubectl create -f [resource].yaml
+
+// Deployments
+kubectl get deployment
+kubectl apply -f [deployment].yaml
+kubectl delete deployment [deployment]
+
+
+// Get ingress
+kubectl get ing
+
+// Namespaces
+kubectl get ns
